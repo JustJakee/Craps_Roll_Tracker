@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './DiceRollApp.css'
 import roll2 from './constants/roll2.png';
 import roll3 from './constants/roll3.png';
 import roll4 from './constants/roll4.png';
@@ -35,9 +36,11 @@ const DiceRollApp = () => {
 
   return (
     <div>
+      <h1 className="titleText">Welcome to Craps Tracker!</h1>
       <DiceCombinations onRollClick={handleRollClick} />
+      <button className="clear-button" onClick={handleClearClick}>Clear Rolls</button>
       <RollsList rolls={rolls} />
-      <button onClick={handleClearClick}>Clear Rolls</button>
+      
     </div>
   );
 };
@@ -67,23 +70,23 @@ const DiceCombinations = ({ onRollClick }) => {
     {
       id: 5,
       imageSrc: roll5a,
-      diceNotation: 'Four'
-    },
-    {
-      id: 6,
-      imageSrc: roll5b,
       diceNotation: 'Five'
     },
+    // {
+    //   id: 6,
+    //   imageSrc: roll5b,
+    //   diceNotation: 'Five'
+    // },
     {
       id: 7,
       imageSrc: roll6a,
       diceNotation: 'Six'
     },
-    {
-      id: 8,
-      imageSrc: roll6b,
-      diceNotation: 'Six'
-    },
+    // {
+    //   id: 8,
+    //   imageSrc: roll6b,
+    //   diceNotation: 'Six'
+    // },
     {
       id: 9,
       imageSrc: rollH6,
@@ -94,26 +97,26 @@ const DiceCombinations = ({ onRollClick }) => {
       imageSrc: roll7a,
       diceNotation: 'Seven'
     },
-    {
-      id: 11,
-      imageSrc: roll7b,
-      diceNotation: 'Seven'
-    },
-    {
-      id: 12,
-      imageSrc: roll7c,
-      diceNotation: 'Seven'
-    },
+    // {
+    //   id: 11,
+    //   imageSrc: roll7b,
+    //   diceNotation: 'Seven'
+    // },
+    // {
+    //   id: 12,
+    //   imageSrc: roll7c,
+    //   diceNotation: 'Seven'
+    // },
     {
       id: 13,
       imageSrc: roll8a,
       diceNotation: 'Eight'
     },
-    {
-      id: 14,
-      imageSrc: roll8b,
-      diceNotation: 'Eight'
-    },
+    // {
+    //   id: 14,
+    //   imageSrc: roll8b,
+    //   diceNotation: 'Eight'
+    // },
     {
       id: 15,
       imageSrc: rollH8,
@@ -124,11 +127,11 @@ const DiceCombinations = ({ onRollClick }) => {
       imageSrc: roll9a,
       diceNotation: 'Nine'
     },
-    {
-      id: 17,
-      imageSrc: roll9b,
-      diceNotation: 'Nine'
-    },
+    // {
+    //   id: 17,
+    //   imageSrc: roll9b,
+    //   diceNotation: 'Nine'
+    // },
     {
       id: 18,
       imageSrc: roll10,
@@ -137,7 +140,7 @@ const DiceCombinations = ({ onRollClick }) => {
     {
       id: 19,
       imageSrc: rollH10,
-      diceNotation: 'Hard 10'
+      diceNotation: 'Hard Ten'
     },
     {
       id: 20,
@@ -149,32 +152,34 @@ const DiceCombinations = ({ onRollClick }) => {
       imageSrc: roll12,
       diceNotation: 'Twelve'
     },
-    // Add more combinations as needed
+    // Add images like dice later on?
+    //   <img
+    //   key={combination.id}
+    //   src={combination.imageSrc}
+    //   alt={combination.diceNotation}
+    //   onClick={() => onRollClick(combination.diceNotation)}
+    // />
   ];
 
     return (
-      <div>
+      <div className="dice-combinations">
         {combinations.map(combination => (
-          <img
-            key={combination.id}
-            src={combination.imageSrc}
-            alt={combination.diceNotation}
-            onClick={() => onRollClick(combination.diceNotation)}
-          />
+          <button className="combination-button" onClick={() => onRollClick(combination.diceNotation)}> {combination.diceNotation} </button>
         ))}
       </div>
   );
 };
 
 const RollsList = ({ rolls }) => {
+
   return (
-    <div>
-      <h2>Previous Rolls:</h2>
-      <ul>
+    <div className="RollList-container">
+      <h2 className="headerText">Total Rolls: {rolls.length} | Previous Rolls:</h2>
+      <ol className="RollList">
         {rolls.map((roll, index) => (
           <li key={index}>{roll}</li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
