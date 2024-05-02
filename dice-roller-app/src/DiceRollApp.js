@@ -36,7 +36,7 @@ const DiceRollApp = () => {
 
   return (
     <div>
-      <h1 className="titleText">Welcome to Craps Tracker!</h1>
+      <h1 className="titleText">Craps Tracker!</h1>
       <DiceCombinations onRollClick={handleRollClick} />
       <button className="clear-button" onClick={handleClearClick}>Clear Rolls</button>
       <RollsList rolls={rolls} />
@@ -164,7 +164,7 @@ const DiceCombinations = ({ onRollClick }) => {
     return (
       <div className="dice-combinations">
         {combinations.map(combination => (
-          <button className="combination-button" onClick={() => onRollClick(combination.diceNotation)}> {combination.diceNotation} </button>
+          <button className={combination.diceNotation === 'Seven' ? "combination-button-seven" : "combination-button-all"} onClick={() => onRollClick(combination.diceNotation)}> {combination.diceNotation} </button>
         ))}
       </div>
   );
